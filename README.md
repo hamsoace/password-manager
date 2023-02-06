@@ -55,13 +55,13 @@
 ## SOCIAL
 
 
-[Facebook 🧡](https://www.facebook.com/desiprogrammerofficial)
+[Facebook 🧡](https://www.facebook.com/hamsoace)
 
-[Instagram](https://www.instagram.com/desiprogrammer/)
+[Instagram](https://www.instagram.com/hamsoace/)
 
-[Gitlab](https://gitlab.com/desiprogrammer)
+[Gitlab](https://gitlab.com/hamsoace)
 
-[Github](https://github.com/desi-programmer)
+[Github](https://github.com/hamsoace)
 
   
 # Data
