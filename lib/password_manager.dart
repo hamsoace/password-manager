@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:password_manager/passwords.dart';
 
 
 class PasswordManager extends StatelessWidget {
@@ -45,7 +46,7 @@ class _FingerPrintAuthState extends State<FingerPrintAuth> {
       if (authenticated) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => PasswordManager(),
+            builder: (context) => Passwords(),
           ),
         );
       } else {

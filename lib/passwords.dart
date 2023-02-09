@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive/hive.dart';
+import 'package:password_manager/calendar.dart';
 import 'package:password_manager/controller/encrypter.dart';
+import 'package:password_manager/home_page.dart';
 import 'package:password_manager/icons_map.dart' as CustomIcons;
 import 'package:password_manager/quizler.dart';
+import 'package:password_manager/settings.dart';
 
-import 'calendar.dart';
-import 'home_page.dart';
-import 'password_manager.dart';
-import 'settings.dart';
 
 class Passwords extends StatefulWidget {
   @override
@@ -61,22 +60,25 @@ class _PasswordsState extends State<Passwords> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PasswordManager()),
-              );
-            },
-            child: Icon(Icons.password),
-            backgroundColor: Color(0xff892cdc),
-          ),
-          SizedBox(width: 10),
-          FloatingActionButton(
-            onPressed: () {
-              Navigator.push(
-                context,
                 MaterialPageRoute(builder: (context) => QuizPage()),
               );
             },
             child: Icon(Icons.quiz),
             backgroundColor: Color(0xff892cdc),
+          ),
+          SizedBox(width: 10),
+          FloatingActionButton(
+          onPressed: insertDB,
+          child: Icon(
+          Icons.add,
+          color: Colors.white,
+          ),
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+          10.0,
+          ),
+          ),
+          backgroundColor: Color(0xff892cdc),
           ),
           SizedBox(width: 10),
           FloatingActionButton(

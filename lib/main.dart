@@ -10,6 +10,11 @@ import 'package:password_manager/login_screen_3.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async{
+  await Firebase.initializeApp();
+
+  print("Handling a background message: ${message.messageId}");
+}
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -33,6 +38,38 @@ void main() async{
     'passwords',
     encryptionCipher: HiveAesCipher(encryptionKey),
   );
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
+  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    print('User granted permission');
+  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+    print('User granted provisional permission');
+  } else {
+    print('User declined or has not accepted permission');
+  }
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print('Got a message whilst in the foreground!');
+    print('Message data: ${message.data}');
+
+    if (message.notification != null) {
+      print('Message also contained a notification: ${message.notification}');
+    }
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    
+  });
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -55,47 +92,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String mToken = " ";
+  String mToken;
 
-  void requestPermission() async{
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-    NotificationSettings settings = await messaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
-
-    if (settings.authorizationStatus == AuthorizationStatus.authorized){
-      print('User granted permission');
-    }else if (settings.authorizationStatus == AuthorizationStatus.provisional){
-      print('User granted provisional permission');
-    }else{
-      print('User declined or has not accepted permission');
-    }
-  }
-
-  void getToken() async{
-    await FirebaseMessaging.instance.getToken().then(
-            (token){
-          setState(() {
-            mToken = token;
-            print("My token is $mToken");
-          });
-          saveToken(token);
-        }
-    );
-  }
-
-  void saveToken(String token) async{
-    await FirebaseFirestore.instance.collection("UserTokens").doc("User2").set({
-      'token' : token,
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,3 +119,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
