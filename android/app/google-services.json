@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "758436208904",
+    "project_id": "p2p-997a1",
+    "storage_bucket": "p2p-997a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758436208904:android:4d0d6176f18ad42bb90cbd",
+        "android_client_info": {
+          "package_name": "com.example.password_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758436208904-sajkl78otqmfsfbn0ug13ti8uood673l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX6IITSPq399OD7TD9M-rnN81CX_YNFkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758436208904-sajkl78otqmfsfbn0ug13ti8uood673l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

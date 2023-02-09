@@ -3,8 +3,12 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hive/hive.dart';
 import 'package:password_manager/controller/encrypter.dart';
 import 'package:password_manager/icons_map.dart' as CustomIcons;
-import 'package:password_manager/pages/main.dart';
 import 'package:password_manager/quizler.dart';
+
+import 'calendar.dart';
+import 'home_page.dart';
+import 'password_manager.dart';
+import 'settings.dart';
 
 class Passwords extends StatefulWidget {
   @override
@@ -37,26 +41,30 @@ class _PasswordsState extends State<Passwords> {
         ),
       ),
       //
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: insertDB,
-      //   child: Icon(
-      //     Icons.add,
-      //     color: Colors.white,
-      //   ),
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.circular(
-      //       10.0,
-      //     ),
-      //   ),
-      //   backgroundColor: Color(0xff892cdc),
-      // ),
+
 
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FloatingActionButton(
-            onPressed: insertDB,
-            child: Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Home()),
+              );
+            },
+            child: Icon(Icons.home),
+            backgroundColor: Color(0xff892cdc),
+          ),
+          SizedBox(width: 10),
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PasswordManager()),
+              );
+            },
+            child: Icon(Icons.password),
             backgroundColor: Color(0xff892cdc),
           ),
           SizedBox(width: 10),
@@ -67,6 +75,17 @@ class _PasswordsState extends State<Passwords> {
                 MaterialPageRoute(builder: (context) => QuizPage()),
               );
             },
+            child: Icon(Icons.quiz),
+            backgroundColor: Color(0xff892cdc),
+          ),
+          SizedBox(width: 10),
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CalendarPage()),
+              );
+            },
             child: Icon(Icons.calendar_month),
             backgroundColor: Color(0xff892cdc),
           ),
@@ -75,17 +94,17 @@ class _PasswordsState extends State<Passwords> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => SettingsPage()),
               );
             },
-            child: Icon(Icons.quiz),
+            child: Icon(Icons.settings),
             backgroundColor: Color(0xff892cdc),
           ),
         ],
       ),
-
-      //
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      //
+       //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
 
       //
       body: FutureBuilder(
@@ -97,7 +116,7 @@ class _PasswordsState extends State<Passwords> {
                 "You have saved no password 😓.\nSave some... \nIt's Secure 🔐.\nEverything is in your Phone..",
                 style: TextStyle(
                   fontSize: 22.0,
-                  color: Colors.grey,
+                  color: Colors.white,
                   fontFamily: "customFont",
                 ),
                 textAlign: TextAlign.center,
@@ -128,7 +147,7 @@ class _PasswordsState extends State<Passwords> {
                         "${data['nick']}",
                         style: TextStyle(
                           fontSize: 22.0,
-                          color: Colors.grey,
+                          color: Colors.white,
                           fontFamily: "customFont",
                         ),
                         maxLines: 1,
@@ -138,7 +157,7 @@ class _PasswordsState extends State<Passwords> {
                         "CLick on the copy icon to copy your Password !",
                         style: TextStyle(
                           fontSize: 16.0,
-                          color: Colors.grey,
+                          color: Colors.white,
                           fontFamily: "customFont",
                         ),
                       ),
@@ -189,7 +208,7 @@ class _PasswordsState extends State<Passwords> {
           12.0,
         ),
         decoration: BoxDecoration(
-          color: Colors.black87,
+          color: Colors.grey,
         ),
         child: Form(
           child: Column(

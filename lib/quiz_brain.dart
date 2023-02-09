@@ -5,30 +5,30 @@ class QuizBrain {
   int _questionNumber = 0;
 
   List<Question> _questionBank = [
-    Question('Some cats are actually allergic to humans', true),
-    Question('You can lead a cow down stairs but not up stairs.', false),
-    Question('Approximately one quarter of human bones are in the feet.', true),
-    Question('A slug\'s blood is green.', true),
-    Question('Buzz Aldrin\'s mother\'s maiden name was \"Moon\".', true),
-    Question('It is illegal to pee in the Ocean in Portugal.', true),
+    Question('It is safe to open an email attachment from an unknown sender.', false),
+    Question('Anti-virus software can protect against all forms of malware.', false),
+    Question('You should always give out personal information when asked for it online.', false),
+    Question('Public Wi-Fi networks are always secure.', false),
+    Question('You should use the same password for all of your accounts.', false),
+    Question('It is safe to use public charging stations for your devices.', false),
     Question(
-        'No piece of square dry paper can be folded in half more than 7 times.',
+        'You should download software from unverified sources.',
         false),
     Question(
-        'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
-        true),
-    Question(
-        'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
+        'Social engineering attacks can only occur through email.',
         false),
     Question(
-        'The total surface area of two human lungs is approximately 70 square metres.',
-        true),
-    Question('Google was originally called \"Backrub\".', true),
+        'Two-factor authentication is not necessary for all accounts.',
+        false),
     Question(
-        'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
+        'You should ignore software updates and security patches.',
+        false),
+    Question('Strong passwords should be at least 12 characters long and include a mix of letters, numbers, and symbols.', true),
+    Question(
+        ' Regular backups of important data can help prevent data loss in the event of a cyber attack or system failure.',
         true),
     Question(
-        'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
+        'It\'s a good idea to regularly review and update privacy settings on social media accounts.',
         true),
   ];
 

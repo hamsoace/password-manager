@@ -10,7 +10,7 @@ class Quizzler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: Color(0xebeae8),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -36,11 +36,11 @@ class _QuizPageState extends State<QuizPage> {
     setState(() {
       if (quizBrain.isFinished() == true) {
         Alert(
-          context: context,
-          title: 'Finished!',
-          desc: 'You\'ve reached the end of the quiz.',
-        ).show();
-        quizBrain.reset();
+              context: context,
+              title: 'Finished!',
+              desc: 'You\'ve reached the end of the quiz.\nScore: ${scoreKeeper.length}',
+            ).show();
+            quizBrain.reset();
         scoreKeeper = [];
       } else {
         if (userPickedAnswer == correctAnswer) {
@@ -128,9 +128,3 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 }
-
-/*
-question1: 'You can lead a cow down stairs but not up stairs.', false,
-question2: 'Approximately one quarter of human bones are in the feet.', true,
-question3: 'A slug\'s blood is green.', true,
-*/
